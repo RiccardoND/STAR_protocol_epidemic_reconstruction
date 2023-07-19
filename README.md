@@ -8,4 +8,5 @@ This repository is a "spin-off" of the the project: https://github.com/RiccardoN
 - The map of Milan: positron_darker_2023.png
 
 - Table S1 contains the cumulative number of deaths per day for each parish
+- TableS1_formatted is the formatted version of TableS1 with one row per death
 - Table S2 contains the GPS coordinates of each parish
