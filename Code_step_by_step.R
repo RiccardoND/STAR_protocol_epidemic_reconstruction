@@ -122,38 +122,38 @@ dev.off()
 
 dist <- dist(t(peste_cum_norm_sel))
 
-pca <- cmdscale(dist, eig = T)
+pcoa <- cmdscale(dist, eig = T)
 
 pdf("Figures/Fig4.pdf", 10,10)
-plot(pca$eig)
+plot(pcoa$eig)
 dev.off()
 
-pca <- cmdscale(dist, 3)
+pcoa <- cmdscale(dist, 3)
 
 
-silhouette <- fviz_nbclust(peste_cum_norm_sel, kmeans, method = "silhouette", k.max=10) 
+silhouette <- fviz_nbclust(pcoa, kmeans, method = "silhouette", k.max=10) 
 
 pdf("Figures/Fig5.pdf", 12,7)
 silhouette
 dev.off()
 
 
-f <- kmeans(pca, 2)
+f <- kmeans(pcoa, 2)
 
 clusters <- as.matrix(f$cluster)
 
-clus <- clusters[as.matrix(row.names(pca)),1]
+clus <- clusters[as.matrix(row.names(pcoa)),1]
 
 
 
 
-a <- adonis2(pca ~ clus, method='eu')
+a <- adonis2(pcoa ~ clus, method='eu')
 p_value <- a$`Pr(>F)`[1]
 
 
 
 pdf("Figures/Fig6.pdf", 12,7)
-s.class(pca, 
+s.class(pcoa, 
         as.factor(clus), 
         col = c("#42a4cf","#ed4e4e"),
         cellipse = 0,
